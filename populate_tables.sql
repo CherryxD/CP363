@@ -3,12 +3,15 @@ USE league_database;
 INSERT INTO leagues VALUES
 ("LCK"),
 ("LEC"),
-("LTA-N");
+("LTA-N"),
+("LPL"),
+("LCP");
 
 INSERT INTO tournaments VALUES
 ("LCK Cup 2025", 'B', "South Korea"),
 ("LEC Winter 2025", "B", "EMEA"),
-("LTA North 2025 Split 1", "B", "North America");
+("LTA North 2025 Split 1", "B", "North America"),
+("First Stand 2025", "A", "International");
 
 INSERT INTO teams VALUES
 ('BNK FEARX', 'BFX', 'LCK'),
@@ -38,7 +41,9 @@ INSERT INTO teams VALUES
 ('Shopify Rebellion', 'SR', 'LTA-N'),
 ('Team Liquid', 'TL', 'LTA-N'),
 ('100 Thieves', '100T', 'LTA-N'),
-('Disguised', 'DSG', 'LTA-N');
+('Disguised', 'DSG', 'LTA-N'),
+('Top Esports', 'TES', 'LPL'),
+('CTBC Flying Oyster', 'CFO', 'LCP');
 
 INSERT INTO players VALUES
 ('Clear', 'Song', 'Hyeon-min', 'South Korea', '2002-12-19', 'BFX'),
@@ -184,7 +189,18 @@ INSERT INTO players VALUES
 ('UmTi', 'Um', 'Sung-hyeon', 'South Korea', '1999-06-02', 'TL'),
 ('APA', 'Stearns', 'Eain', 'United States', '2002-03-05', 'TL'),
 ('Yeon', 'Sung', 'Sean', 'United States', '2001-01-07', 'TL'),
-('CoreJJ', 'Jo', 'Yong-in', 'South Korea', '1994-06-22', 'TL');
+('CoreJJ', 'Jo', 'Yong-in', 'South Korea', '1994-06-22', 'TL'),
+('369', 'Bai', 'Jiahao', 'China', '2001-07-12', 'TES'),
+('Kanavi', 'Seo', 'Jin-hyeok', 'South Korea', '2000-11-02', 'TES'),
+('Creme', 'Lin', 'Jian', 'China', '2003-12-14', 'TES'),
+('JackeyLove', 'Yu', 'Wenbo', 'China', '2000-11-18', 'TES'),
+('Crisp', 'Liu', 'Qingsong', 'China', '1998-08-19', 'TES'),
+('Driver', 'Shen', 'Tsunghua', 'Taiwan', '2002-04-04', 'CFO'),
+('Rest', 'Hsu', 'Shihchieh', 'Taiwan', '1998-12-11', 'CFO'),
+('JunJia', 'Yu', 'Chunchia', 'Taiwan', '2002-06-10', 'CFO'),
+('HongQ', 'Tsai', 'Minghong', 'Taiwan', '2007-07-02', 'CFO'),
+('Doggo', 'Chiu', 'Tzuchuan', 'Taiwan', '2004-01-14', 'CFO'),
+('Kaiwing', 'Ling', 'Kaiwing', 'Hong Kong', '1996-10-27', 'CFO');
 
 INSERT INTO coaches VALUES 
 ('Ryu', 'Ryu', 'Sang-wook', 'South Korea', '1994-01-28', 'BFX'),
@@ -251,7 +267,11 @@ INSERT INTO coaches VALUES
 ('WildTurtle', 'Tran', 'Jason', 'Canada', '1995-02-09', 'SR'),
 ('Spawn', 'Tiberi', 'Jake', 'Australia', NULL, 'TL'),
 ('Reignover', 'Kim', 'Yeu-jin', 'South Korea', '1995-07-04', 'TL'),
-('Swiffer', 'Papamarkos', 'Simon', 'Australia', '1994-03-31', 'TL');
+('Swiffer', 'Papamarkos', 'Simon', 'Australia', '1994-03-31', 'TL'),
+('Homme', 'Yoon', 'Sung-young', 'South Korea', '1985-01-01', 'TES'),
+('Ben', 'Nam', 'Dong-hyun', 'South Korea', '1995-04-24', 'TES'),
+('Chawy', 'Wong', 'Xinglei', 'Singapore', '1991-11-28', 'CFO'),
+('Wulala', 'Liu', 'Shengwei', 'Taiwan', '1993-12-05', 'CFO');
 
 INSERT INTO contracts VALUES
 (000000001, '2025-01-01', '2025-11-18'),
@@ -330,10 +350,10 @@ INSERT INTO matches (team1, team2, scheduled_date, tournament) VALUES
 ('T1', 'HLE', '2025-02-13', "LCK Cup 2025"),
 ('DK', 'NS', '2025-02-15', "LCK Cup 2025"),
 ('GEN', 'HLE', '2025-02-16', "LCK Cup 2025"),
-(NULL, NULL, '2025-02-19', "LCK Cup 2025"),
-(NULL, NULL, '2025-02-20', "LCK Cup 2025"),
-(NULL, NULL, '2025-02-22', "LCK Cup 2025"),
-(NULL, NULL, '2025-02-23', "LCK Cup 2025"),
+('DK', 'HLE', '2025-02-19', "LCK Cup 2025"),
+('NS', 'GEN', '2025-02-20', "LCK Cup 2025"),
+('DK', 'GEN', '2025-02-22', "LCK Cup 2025"),
+('HLE', 'GEN', '2025-02-23', "LCK Cup 2025"),
 ('TH', 'RGE', '2025-01-18', 'LEC Winter 2025'),
 ('VIT', 'BDS', '2025-01-18', 'LEC Winter 2025'),
 ('GX', 'SK', '2025-01-18', 'LEC Winter 2025'),
@@ -383,16 +403,16 @@ INSERT INTO matches (team1, team2, scheduled_date, tournament) VALUES
 ('G2', 'GX', '2025-02-15', 'LEC Winter 2025'),
 ('MKOI', 'BDS', '2025-02-16', 'LEC Winter 2025'),
 ('KC', 'VIT', '2025-02-16', 'LEC Winter 2025'),
-(NULL, NULL, '2025-02-17', 'LEC Winter 2025'),
-(NULL, NULL, '2025-02-17', 'LEC Winter 2025'),
-(NULL, NULL, '2025-02-22', 'LEC Winter 2025'),
-(NULL, NULL, '2025-02-22', 'LEC Winter 2025'),
-(NULL, NULL, '2025-02-23', 'LEC Winter 2025'),
-(NULL, NULL, '2025-02-23', 'LEC Winter 2025'),
-(NULL, NULL, '2025-02-24', 'LEC Winter 2025'),
-(NULL, NULL, '2025-02-28', 'LEC Winter 2025'),
-(NULL, NULL, '2025-03-01', 'LEC Winter 2025'),
-(NULL, NULL, '2025-03-02', 'LEC Winter 2025'),
+('FNC', 'G2', '2025-02-17', 'LEC Winter 2025'),
+('MKOI', 'KC', '2025-02-17', 'LEC Winter 2025'),
+('BDS', 'VIT', '2025-02-22', 'LEC Winter 2025'),
+('TH', 'GX', '2025-02-22', 'LEC Winter 2025'),
+('FNC', 'BDS', '2025-02-23', 'LEC Winter 2025'),
+('MKOI', 'GX', '2025-02-23', 'LEC Winter 2025'),
+('G2', 'KC', '2025-02-24', 'LEC Winter 2025'),
+('MKOI', 'FNC', '2025-02-28', 'LEC Winter 2025'),
+('KC', 'FNC', '2025-03-01', 'LEC Winter 2025'),
+('G2', 'KC', '2025-03-02', 'LEC Winter 2025'),
 ('SR', 'FQ', '2025-01-25', 'LTA North 2025 Split 1'),
 ('LYON', 'C9', '2025-01-25', 'LTA North 2025 Split 1'),
 ('DSG', '100T', '2025-01-26', 'LTA North 2025 Split 1'),
@@ -404,7 +424,20 @@ INSERT INTO matches (team1, team2, scheduled_date, tournament) VALUES
 ('100T', 'C9', '2025-02-02', 'LTA North 2025 Split 1'),
 ('TL', 'SR', '2025-02-09', 'LTA North 2025 Split 1'),
 ('FQ', 'DIG', '2025-02-09', 'LTA North 2025 Split 1'),
-('FQ', 'TL', '2025-02-09', 'LTA North 2025 Split 1');
+('FQ', 'TL', '2025-02-09', 'LTA North 2025 Split 1'),
+('TL', 'KC', '2025-03-10', 'First Stand 2025'),
+('HLE', 'TES', '2025-03-10', 'First Stand 2025'),
+('CFO', 'KC', '2025-03-11', 'First Stand 2025'),
+('TL', 'TES', '2025-03-11', 'First Stand 2025'),
+('CFO', 'HLE', '2025-03-12', 'First Stand 2025'),
+('KC', 'TES', '2025-03-12', 'First Stand 2025'),
+('TL', 'CFO', '2025-03-13', 'First Stand 2025'),
+('KC', 'HLE', '2025-03-13', 'First Stand 2025'),
+('CFO', 'TES', '2025-03-14', 'First Stand 2025'),
+('TL', 'HLE', '2025-03-14', 'First Stand 2025'),
+(NULL, NULL, '2025-03-15', 'First Stand 2025'),
+(NULL, NULL, '2025-03-15', 'First Stand 2025'),
+(NULL, NULL, '2025-03-16', 'First Stand 2025');
 
 INSERT INTO awards (award_name, recipient_player, recipient_coach, date, nominations) VALUES
 ('Group Stage MVP', 'Quad', NULL, '2025-01-25', 'Nominee1'),
@@ -449,6 +482,12 @@ INSERT INTO results VALUES
 (30, 3, 1),
 (31, 0, 3),
 (32, 2, 3),
+(33, 3, 1),
+(34, 2, 3),
+(35, 2, 3),
+(36, 2, 3),
+(37, 0, 3),
+(38, 3, 2),
 (39, 0, 1),
 (40, 1, 0),
 (41, 1, 0),
@@ -494,6 +533,20 @@ INSERT INTO results VALUES
 (81, 0, 1),
 (82, 1, 0),
 (83, 0, 1),
+(84, 2, 0),
+(85, 2, 0),
+(86, 2, 0),
+(87, 2, 0),
+(88, 0, 2),
+(89, 0, 2),
+(90, 2, 1),
+(91, 1, 2),
+(92, 2, 1),
+(93, 2, 0),
+(94, 3, 1),
+(95, 1, 3),
+(96, 3, 2),
+(97, 2, 3),
 (98, 0, 2),
 (99, 0, 2),
 (100, 0, 2),
