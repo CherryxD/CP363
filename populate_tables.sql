@@ -311,9 +311,13 @@ INSERT INTO contracts VALUES
 (000000035, '2025-01-01', '2025-11-18'),
 (000000036, '2025-01-01', '2025-11-18');
 
-INSERT INTO transfers VALUES 
-('100T', 'C9', 000000001, '2025-02-01'),
-('C9', '100T', 000000008, '2025-02-01');
+INSERT INTO transfers (to_team, from_team, transfer_date) VALUES 
+('100T', 'C9', '2025-02-01'),
+('C9', '100T', '2025-02-01');
+
+INSERT INTO transfer_ids () VALUES 
+(1, 8),
+(2, 1);
 
 INSERT INTO matches (team1, team2, scheduled_date, tournament) VALUES 
 ('BRO', 'DRX', '2025-01-15', "LCK Cup 2025"),
@@ -439,15 +443,48 @@ INSERT INTO matches (team1, team2, scheduled_date, tournament) VALUES
 (NULL, NULL, '2025-03-15', 'First Stand 2025'),
 (NULL, NULL, '2025-03-16', 'First Stand 2025');
 
-INSERT INTO awards (award_name, recipient_player, recipient_coach, date, nominations) VALUES
-('Group Stage MVP', 'Quad', NULL, '2025-01-25', 'Nominee1'),
-('Group Stage MVP', 'Thanatos', NULL, '2025-01-25', 'Nominee1'),
-('Group Stage MVP', 'FBI', NULL, '2025-01-26', 'Nominee1'),
-('Group Stage MVP', 'APA', NULL, '2025-01-26', 'Nominee1'),
-('Group Stage MVP', 'Contractz', NULL, '2025-02-01', 'Nominee1'),
-('Group Stage MVP', 'Keine', NULL, '2025-02-01', 'Nominee1'),
-('Group Stage MVP', 'Quid', NULL, '2025-02-02', 'Nominee1'),
-('Group Stage MVP', 'Vulcan', NULL, '2025-02-02', 'Nominee1');
+INSERT INTO Awards (award_name, received_date) VALUES
+('Group Stage MVP', '2025-01-25'),
+('Group Stage MVP', '2025-01-25'),
+('Group Stage MVP', '2025-01-26'),
+('Group Stage MVP', '2025-01-26'),
+('Group Stage MVP', '2025-02-01'),
+('Group Stage MVP', '2025-02-01'),
+('Group Stage MVP', '2025-02-02'),
+('Group Stage MVP', '2025-02-02'),
+('Coach of the Split', '2025-02-09');
+
+INSERT INTO Player_Award_Recipients (award_id, recipient_id) VALUES
+(1, 'Quad'),
+(2, 'Thanatos'),
+(3, 'FBI'),
+(4, 'APA'),
+(5, 'Contractz'),
+(6, 'Keine'),
+(7, 'Quid'),
+(8, 'Vulcan');
+
+INSERT INTO Coach_Award_Recipients (award_id, recipient_id) VALUES
+(9, 'Spawn');
+
+INSERT INTO Player_Award_Nominations (award_id, nominee_id, nominee_rank) VALUES
+(1, 'Quad', 'First'),
+(1, 'Massu', 'Second'),
+(2, 'Thanatos', 'First'),
+(2, 'Loki', 'Second'),
+(3, 'FBI', 'First'),
+(3, 'Quid', 'Second'),
+(4, 'APA', 'First'),
+(4, 'Yeon', 'Second'),
+(5, 'Contractz', 'First'),
+(6, 'Keine', 'First'),
+(7, 'Quid', 'First'),
+(8, 'Vulcan', 'First');
+
+INSERT INTO Coach_Award_Nominations (award_id, nominee_id, nominee_rank) VALUES
+(9, 'Spawn', 'First'),
+(9, 'Nukeduck', 'Second'),
+(9, 'Goldenglue', 'Third');
 
 INSERT INTO results VALUES
 (1, 1, 2),

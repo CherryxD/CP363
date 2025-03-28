@@ -51,10 +51,20 @@ CREATE TABLE Contracts (
 CREATE TABLE Transfers (
     to_team CHAR(4) NOT NULL,
     from_team CHAR(4) NOT NULL,
-    contract INT,
-    date DATE,
+    transfer_id INT AUTO_INCREMENT,
+    transfer_date DATE NOT NULL,
+    PRIMARY KEY (transfer_id),
     FOREIGN KEY (to_team) REFERENCES Teams(short_name),
     FOREIGN KEY (from_team) REFERENCES Teams(short_name)
+);
+
+-- Transfer IDs Table
+CREATE TABLE Transfer_Ids (
+	transfer_id INT NOT NULL,
+    contract_id INT NOT NULL,
+    PRIMARY KEY (transfer_id, contract_id),
+    FOREIGN KEY (transfer_id) REFERENCES Transfers(transfer_id) ON DELETE CASCADE,
+    FOREIGN KEY (contract_id) REFERENCES Contracts(contract_id) ON DELETE CASCADE
 );
 
 -- Tournaments Table
@@ -83,6 +93,7 @@ CREATE TABLE Results (
     match_id INT NOT NULL,
     team1_score INT,
     team2_score INT,
+    PRIMARY KEY (match_id),
     FOREIGN KEY (match_id) REFERENCES Matches(match_id)
 );
 
@@ -99,14 +110,45 @@ CREATE TABLE Stats (
 
 -- Awards Table
 CREATE TABLE Awards (
-    award_id INT NOT NULL AUTO_INCREMENT,
-    award_name CHAR(50) NOT NULL,
-    recipient_player CHAR(50),
-    recipient_coach CHAR(50),
-    date DATE,
-    nominations SET('Nominee1', 'Nominee2', 'Nominee3'),
-    PRIMARY KEY (award_id),
-    FOREIGN KEY (recipient_player) REFERENCES Players(user_name),
-    FOREIGN KEY (recipient_coach) REFERENCES Coaches(user_name),
-    CHECK ((recipient_player IS NOT NULL and recipient_coach IS NULL) OR (recipient_player IS NULL and recipient_coach IS NOT NULL))
+	award_id INT NOT NULL AUTO_INCREMENT,
+	award_name CHAR(50) NOT NULL,
+	received_date DATE NOT NULL,
+	PRIMARY KEY (award_id)
+);
+
+-- Player Award Recipients Table
+CREATE TABLE Player_Award_Recipients (
+	award_id INT PRIMARY KEY,
+	recipient_id CHAR(50) NOT NULL,
+	FOREIGN KEY (award_id) REFERENCES Awards(award_id),
+	FOREIGN KEY (recipient_id) REFERENCES Players(user_name)
+);
+
+-- Coach Award Recipients Table
+CREATE TABLE Coach_Award_Recipients (
+	award_id INT PRIMARY KEY,
+	recipient_id CHAR(50) NOT NULL,
+	FOREIGN KEY (award_id) REFERENCES Awards(award_id),
+	FOREIGN KEY (recipient_id) REFERENCES Coaches(user_name)
+);
+
+-- Player Award Nominations
+CREATE TABLE Player_Award_Nominations (
+	award_id INT NOT NULL,
+	nominee_id CHAR(50) NOT NULL,
+	nominee_rank ENUM('First', 'Second', 'Third') NOT NULL,
+	PRIMARY KEY (award_id, nominee_id),
+	FOREIGN KEY (award_id) REFERENCES Awards(award_id) ON DELETE CASCADE,
+	FOREIGN KEY (nominee_id) REFERENCES Players(user_name)
+);
+
+
+-- Coach Award Nominations
+CREATE TABLE Coach_Award_Nominations (
+	award_id INT NOT NULL,
+	nominee_id CHAR(50) NOT NULL,
+	nominee_rank ENUM('First', 'Second', 'Third') NOT NULL,
+	PRIMARY KEY (award_id, nominee_id),
+	FOREIGN KEY (award_id) REFERENCES Awards(award_id) ON DELETE CASCADE,
+	FOREIGN KEY (nominee_id) REFERENCES Coaches(user_name)
 );

@@ -1,9 +1,14 @@
 USE League_Database;
+DROP TABLE player_award_nominations;
+DROP TABLE player_award_recipients;
+DROP TABLE coach_award_nominations;
+DROP TABLE coach_award_recipients;
 DROP TABLE awards;
 DROP TABLE stats;
 DROP TABLE results;
 DROP TABLE matches;
 DROP TABLE tournaments;
+DROP TABLE transfer_ids;
 DROP TABLE contracts;
 DROP TABLE transfers;
 DROP TABLE players;
